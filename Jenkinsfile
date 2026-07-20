@@ -11,7 +11,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/rasmi1612-pv/selenium-maven.git'
+                git 'https://github.com/rasmi1612-pv/selenium-project.git'
             }
         }
 
