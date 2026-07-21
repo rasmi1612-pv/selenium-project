@@ -9,12 +9,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/rasmi1612-pv/selenium-project.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 bat 'mvn clean compile'
@@ -29,17 +23,15 @@ pipeline {
 
         stage('Archive Reports') {
             steps {
-                archiveArtifacts artifacts: 'Reports/**/*'
+                archiveArtifacts artifacts: 'Reports/**/*', allowEmptyArchive: true
             }
         }
-
     }
 
     post {
-
         always {
-            junit '**/surefire-reports/*.xml'
+            junit testResults: '**/surefire-reports/*.xml',
+                  allowEmptyResults: true
         }
-
     }
 }
