@@ -107,7 +107,7 @@ public class steps {
 
     @And("browser is closed")
     public void browser_is_closed() {
-        //driver.quit();
+        driver.quit();
         System.out.println("jenkins");
     }
 }
