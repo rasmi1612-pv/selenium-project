@@ -29,9 +29,13 @@ pipeline {
     }
 
     post {
-        always {
-            junit testResults: '**/surefire-reports/*.xml',
-                  allowEmptyResults: true
-        }
+    always {
+        publishHTML(target: [
+            reportDir: 'test-output',
+            reportFiles: 'index.html',
+            reportName: 'TestNG Report',
+            keepAll: true,
+            alwaysLinkToLastBuild: true
+        ])
     }
 }
